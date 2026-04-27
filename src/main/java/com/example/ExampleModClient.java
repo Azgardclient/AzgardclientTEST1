@@ -1,4 +1,3 @@
-Java
 package com.example;
 
 import net.fabricmc.api.ClientModInitializer;
@@ -15,10 +14,12 @@ public class ExampleModClient implements ClientModInitializer {
                 client.setScreen(new Screen(Text.literal("Azgard")) {
                     @Override
                     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-                        context.fill(0, 0, width, height, 0xBB000000);
-                        context.drawCenteredTextWithShadow(this.textRenderer, "AZGARD CLIENT", width / 2, height / 2, 0xFFFFFFFF);
+                        context.fill(width / 2 - 100, height / 2 - 70, width / 2 + 100, height / 2 + 70, 0xBB000000);
+                        context.drawCenteredTextWithShadow(this.textRenderer, "AZGARD CLIENT", width / 2, height / 2 - 60, 0xFFFFFFFF);
                         super.render(context, mouseX, mouseY, delta);
                     }
+                    @Override
+                    public boolean shouldPause() { return false; }
                 });
             }
         });
