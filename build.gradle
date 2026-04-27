@@ -27,13 +27,12 @@ loom {
 }
 
 dependencies {
-dependencies {
-    minecraft "com.mojang:minecraft:1.20.1" // Укажи свою версию игры
-    mappings "net.fabricmc:yarn:1.20.1+build.10:v2" 
-    modImplementation "net.fabricmc:fabric-loader:0.14.22"
+	minecraft "com.mojang:minecraft:1.21.4"
+	mappings "net.fabricmc:yarn:1.21.4+build.2:v2"
+	modImplementation "net.fabricmc:fabric-loader:0.16.9"
 
-    // БЕЗ ЭТОГО КЛИЕНТСКИЙ КОД НЕ СОБЕРЕТСЯ:
-    modImplementation "net.fabricmc.fabric-api:fabric-api:0.83.0+1.20.1" 
+	// Fabric API для 1.21.4
+	modImplementation "net.fabricmc.fabric-api:fabric-api:0.113.0+1.21.4"
 }
 
 processResources {
