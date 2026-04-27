@@ -10,8 +10,7 @@ public class ExampleModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            // Клавиша M (код 77)
-            while (client.options.allKeys[77].wasPressed()) {
+            while (client.options.allKeys[77].wasPressed()) { // Клавиша M
                 client.setScreen(new Screen(Text.literal("Azgard")) {
                     @Override
                     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
