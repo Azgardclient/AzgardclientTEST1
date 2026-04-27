@@ -1,4 +1,17 @@
-"entrypoints": {
+{
+  "schemaVersion": 1,
+  "id": "modid",
+  "version": "${version}",
+  "name": "Azgard Client",
+  "description": "Custom Client for Minecraft",
+  "authors": [
+    "Erlanuly Aslan"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+  "environment": "*",
+  "entrypoints": {
     "main": [
       "com.example.ExampleMod"
     ],
@@ -6,3 +19,12 @@
       "com.example.ExampleModClient"
     ]
   },
+  "mixins": [
+    "modid.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.9",
+    "minecraft": "~1.21.4",
+    "java": ">=21"
+  }
+}
