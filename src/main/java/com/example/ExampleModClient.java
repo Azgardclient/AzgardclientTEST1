@@ -10,12 +10,14 @@ public class ExampleModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while (client.options.allKeys[77].wasPressed()) { // Клавиша M
+            // Клавиша M (код 77)
+            while (client.options.allKeys[77].wasPressed()) {
                 client.setScreen(new Screen(Text.literal("Azgard")) {
                     @Override
                     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+                        // Рисуем меню
                         context.fill(width / 2 - 100, height / 2 - 70, width / 2 + 100, height / 2 + 70, 0xBB000000);
-                        context.drawCenteredTextWithShadow(this.textRenderer, "AZGARD CLIENT", width / 2, height / 2 - 60, 0xFFFFFFFF);
+                        context.drawCenteredTextWithShadow(this.textRenderer, "AZGARD CLIENT 1.21.4", width / 2, height / 2 - 60, 0xFFFFFFFF);
                         super.render(context, mouseX, mouseY, delta);
                     }
                     @Override
