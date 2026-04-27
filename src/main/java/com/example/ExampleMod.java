@@ -10,8 +10,11 @@ public class ExampleMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Azgard Client Initialized!");
-    }
-}
+        LOGG
+        
+ = "azgardclient";
+     static final Logger LOGGER = LoggerFactory.LoggerFactory.getLogger(MOD_ID);
 
-
+    @
+    public void onInitialize() {
+        LO 
