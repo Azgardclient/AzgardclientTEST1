@@ -13,3 +13,4 @@ public class ExampleMod implements ModInitializer {
         LOGGER.info("Azgard Client Initialized!");
     }
 }
+
