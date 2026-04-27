@@ -51,6 +51,5 @@ public class ExampleMod implements ModInitializer {
                     public boolean shouldPause() { return false; }
                 });
             }
-        });
+});
     }
-}
