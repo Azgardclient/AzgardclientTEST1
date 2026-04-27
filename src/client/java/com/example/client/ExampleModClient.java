@@ -3,20 +3,27 @@ package com.example;
 import com.example.client.AzgardScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.minecraft.client.MinecraftClient;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
+import org.lwjgl.glfw.GLFW;
 
 public class ExampleModClient implements ClientModInitializer {
+    private static KeyBinding keyBinding;
+
     @Override
     public void onInitializeClient() {
-        // Мы даже не будем регистрировать кнопку через KeyBinding, 
-        // чтобы GitHub не ныл. Просто проверим нажатие клавиши M (код 77) напрямую.
+        keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.azgard.open", 
+            InputUtil.Type.KEYSYM, 
+            GLFW.GLFW_KEY_M, 
+            "category.azgard.client"
+        ));
+
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (client.keyboard != null && client.keyboard.onChar('m', 77)) {
-                 // Если это не сработает, мы вернемся к базе, 
-                 // но сейчас это самый чистый способ.
+            while (keyBinding.wasPressed()) {
+                client.setScreen(new AzgardScreen());
             }
         });
-        
-        System.out.println("Azgard GUI Loaded!");
     }
 }
