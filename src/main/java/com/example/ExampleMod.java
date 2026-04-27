@@ -5,7 +5,7 @@ import net.fabricmc.api.ModInitializer;
 public class ExampleMod implements ModInitializer {
     @Override
     public void onInitialize() {
-        // Здесь ничего не пишем, чтобы не было ошибок компиляции
-        System.out.println("Azgard Mod Base Loaded");
+        // Оставляем пустым, чтобы не было ошибок со сторонами
+        System.out.println("Azgard Mod Base Initialized");
     }
 }
