@@ -1,27 +1,29 @@
+package com.example;
+
+import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.text.Text;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.text.Text;
 
-public class MyCustomScreen extends Screen {
-    public MyCustomScreen() {
-        super(Text.literal("Мое Кастомное Меню"));
-    }
-
+public class ExampleMod implements ModInitializer {
     @Override
-    protected void init() {
-        // Добавляем кнопку
-        this.addDrawableChild(ButtonWidget.builder(Text.literal("Нажми меня"), button -> {
-            System.out.println("Кнопка нажата!");
-        })
-        .dimensions(this.width / 2 - 100, this.height / 2, 200, 20) // Позиция и размер
-        .build());
-    }
-
-    @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        this.renderBackground(context, mouseX, mouseY, delta); // Затемнение заднего фона
-        context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, 20, 0xFFFFFF);
-        super.render(context, mouseX, mouseY, delta);
+    public void onInitialize() {
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            while (client.options.allKeys[77].wasPressed()) { // Клавиша M
+                client.setScreen(new Screen(Text.literal("Azgard")) {
+                    @Override
+                    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+                        // Фон меню
+                        context.fill(width / 2 - 100, height / 2 - 70, width / 2 + 100, height / 2 + 70, 0xBB000000);
+                        // Заголовок
+                        context.drawCenteredTextWithShadow(this.textRenderer, "AZGARD CLIENT", width / 2, height / 2 - 60, 0xFFFFFFFF);
+                        super.render(context, mouseX, mouseY, delta);
+                    }
+                    @Override
+                    public boolean shouldPause() { return false; }
+                });
+            }
+        });
     }
 }
